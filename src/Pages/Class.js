@@ -58,7 +58,7 @@ const Class = ({ changePage }) => {
 
   return (
     <div className="ClassPage">
-      <h1>Class page</h1>
+      <h1>Choose Your Class</h1>
       <div className="Class_Imgs">
         <img className="Mage_Img" src={Mage} alt="Mage Gif" />
         <img className="Rouge_Img" src={Rouge} alt="Rouge Gif" />
@@ -72,7 +72,7 @@ const Class = ({ changePage }) => {
       <div className="Start_Game">
         <h2>Start Game</h2>
       </div>
-      <div className="Start_Game" onClick={()=>changePage('Home') }>
+      <div className="Back_Button" onClick={()=>changePage('Home') }>
         <h2>Back</h2>
       </div>
     </div>
