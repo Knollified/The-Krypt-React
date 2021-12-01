@@ -1,38 +1,101 @@
-.App {
+body {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
   text-align: center;
+  background: url(./Assets/BackGroundImage1.jpeg);
 }
+.Game_Container{
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Game_Space{
+  margin: 30px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-items: center;
 }
-
-.App-link {
-  color: #61dafb;
+.Buttons{
+  margin: 30px;
+  display: flex;
+  justify-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  color: bisque;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Button_1{
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Button_2{
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+Header{
+  font-size: 20pt;
+  margin-top: 200px;
+  color: bisque;
+}
+.Button_1:hover{
+  background-color: red;
+}
+.Button_2:hover{
+  background-color: red;
+}
+.Image_Container{
+  margin: 30px;;
+}
+.Skull_img{
+  height:300px;
+  width: 300px;
+}
+.ClassPage{
+  color: bisque;
+}
+.Player_Container{
+  display: flex;
+  flex-direction: row;
+}
+.Player_Container > h2 {
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Player_Container > h2:hover{
+  background-color:green;
+}
+.Start_Game:hover{
+  background-color:green;
+}
+.Start_Game{
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Class_Imgs{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.Mage_Img{
+  height: 200px;
+  width: 200px;
+}
+.Rouge_Img{
+  height: 200px;
+  width: 200px;
+}
+.Knight_Img{
+  height: 200px;
+  width: 200px;
 }
