@@ -30,14 +30,14 @@ body {
   flex-direction: row;
   color: bisque;
 }
-.Button_1 {
+.Button_1 > h2{
   width: 2in;
   margin: 30px;
   padding: 10px;
   border: 10px;
   border-style: double;
 }
-.Button_2{
+.Button_2 > h2{
   width: 2in;
   margin: 30px;
   padding: 10px;
@@ -49,10 +49,10 @@ Header {
   margin-top: 200px;
   color: bisque;
 }
-.Button_1:hover {
+.Button_1 > h2:hover {
   background-color: red;
 }
-.Button_2:hover {
+.Button_2 > h2:hover {
   background-color: red;
 }
 .Image_Container {
@@ -77,29 +77,30 @@ Header {
   flex-direction: row;
   justify-content: center;
 }
-.Character_Button {
-  width: 2in;
-  margin: 30px;
-  border: 10px;
-  border-style: double;
-}
-.Character_Button:hover {
-  background-color: green;
-}
-.Start_Game:hover {
-  background-color: green;
-}
-.Start_Game {
+.Character_Button > h2 {
   width: 2in;
   margin: 30px;
   padding: 10px;
   border: 10px;
   border-style: double;
 }
-.Back_Button:hover {
+.Character_Button > h2:hover {
   background-color: green;
 }
-.Back_Button {
+.Start_Game > h2:hover {
+  background-color: green;
+}
+.Start_Game > h2 {
+  width: 2in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Back_Button > h2:hover {
+  background-color: green;
+}
+.Back_Button > h2 {
   width: 2in;
   margin: 30px;
   padding: 10px;
@@ -141,40 +142,49 @@ Header {
   flex-direction: row;
   justify-content: center;
 }
-.Attack_Button > h2{
-  width: 2in;
-  margin: 30px;
-  padding: 10px;
-  border: 10px ;
-  border-style: double;
-}
-.Defend_Button > h2{
+.Attack_Button > h2 {
   width: 2in;
   margin: 30px;
   padding: 10px;
   border: 10px;
   border-style: double;
 }
-.SpecialAttack_Button > h2{
+.Attack_Button > h2:hover{
+  background: green;
+}
+.Defend_Button > h2 {
   width: 2in;
   margin: 30px;
   padding: 10px;
   border: 10px;
   border-style: double;
 }
-.Game_Page{
+.Defend_Button > h2:hover{
+  background: green;
+}
+.SpecialAttack_Button > h2 {
+  width: 2in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.SpecialAttack_Button > h2:hover{
+  background: green;
+}
+.Game_Page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: bisque;
 }
-.Button_Container{
+.Button_Container {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.Player_Area{
+.Player_Area {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -184,18 +194,99 @@ Header {
   padding: 10px;
   border: 10px;
   border-style: double;
-
 }
-.Player_Stats{
+.Player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Mob {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Player_Stats {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.Mob_Stats{
+.Mob_Stats {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 .Stats {
   padding: 10px;
+}
+.Game_Events {
+  display: flex;
+  align-items: flex-end;
+}
+.Shop_Button > h4{
+  width: 1in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Shop_Button > h4:hover{
+  background: green;
+}
+.NextBattle_Button > h4{
+  width: 1in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+
+}
+.NextBattle_Button > h4:hover{
+  background: green;
+}
+.Shop_Page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: bisque;
+}
+.Shop_Area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 5in;
+  width: 10in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Shop_Items{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.Item > h3{
+  width: 1in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Item > h3:hover{
+  background:green ;
+}
+.ShopeKeeper_Img{
+  height: 200px;
+  width: 200px;
+}
+.Shop_Keeper{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
 }

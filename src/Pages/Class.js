@@ -5,9 +5,9 @@ const Class = ({ changePage }) => {
   class player {
     _classType = "";
     _health = 0;
-    _attack = "";
-    _speed = "";
-    _defense = "";
+    _attack = 0;
+    _speed = 0;
+    _defense = 0;
 
     constructor(classType, health, attack, speed, defense) {
       this._classType = classType;
@@ -40,16 +40,17 @@ const Class = ({ changePage }) => {
   const resetPlayer = (classType) => {
     switch (classType) {
       case "Mage":
-        Player = new player(classType, 25, 5, 5, 5);
+        Player = new player(classType, { Mage }, 25, 5, 5, 5);
+
         alert(JSON.stringify(Player.start()));
         break;
       case "Rouge":
-        Player = new player(classType, 20, 7, 7, 3);
+        Player = new player(classType, { Rouge }, 20, 7, 7, 3);
         alert(JSON.stringify(Player.start()));
 
         break;
       case "Warrior":
-        Player = new player(classType, 28, 7, 3, 7);
+        Player = new player(classType, { Knight }, 28, 7, 3, 7);
         alert(JSON.stringify(Player.start()));
 
         break;
