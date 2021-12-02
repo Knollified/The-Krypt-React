@@ -31,11 +31,15 @@ body {
   color: bisque;
 }
 .Button_1 {
+  width: 2in;
+  margin: 30px;
   padding: 10px;
   border: 10px;
   border-style: double;
 }
-.Button_2 {
+.Button_2{
+  width: 2in;
+  margin: 30px;
   padding: 10px;
   border: 10px;
   border-style: double;
@@ -62,26 +66,31 @@ Header {
   color: bisque;
 }
 .How_To_Play_Page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: bisque;
 }
 .Player_Container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
-.Player_Container > h2 {
-  font-size: 20pt;
+.Character_Button {
+  width: 2in;
   margin: 30px;
-  padding: 10px;
   border: 10px;
   border-style: double;
 }
-.Player_Container > h2:hover {
+.Character_Button:hover {
   background-color: green;
 }
 .Start_Game:hover {
   background-color: green;
 }
 .Start_Game {
+  width: 2in;
   margin: 30px;
   padding: 10px;
   border: 10px;
@@ -91,6 +100,7 @@ Header {
   background-color: green;
 }
 .Back_Button {
+  width: 2in;
   margin: 30px;
   padding: 10px;
   border: 10px;
@@ -113,15 +123,79 @@ Header {
   height: 200px;
   width: 200px;
 }
-.Instructions_Container > ul{
+.Instructions_Container > ul {
   margin: 30px;
   padding: 10px;
   border: 10px;
   border-style: double;
 }
-.Instructions_Container > ul > li{
-  color:bisque;
+.Instructions_Container > ul > li {
+  color: bisque;
   font-size: larger;
   font-weight: 500;
- list-style: none;
+  list-style: none;
+}
+.Action_Containers {
+  color: bisque;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Attack_Button > h2{
+  width: 2in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px ;
+  border-style: double;
+}
+.Defend_Button > h2{
+  width: 2in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.SpecialAttack_Button > h2{
+  width: 2in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+}
+.Game_Page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: bisque;
+}
+.Button_Container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Player_Area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 5in;
+  width: 10in;
+  margin: 30px;
+  padding: 10px;
+  border: 10px;
+  border-style: double;
+
+}
+.Player_Stats{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.Mob_Stats{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.Stats {
+  padding: 10px;
 }

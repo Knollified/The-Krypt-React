@@ -59,21 +59,33 @@ const Class = ({ changePage }) => {
   return (
     <div className="ClassPage">
       <h1>Choose Your Class</h1>
-      <div className="Class_Imgs">
-        <img className="Mage_Img" src={Mage} alt="Mage Gif" />
-        <img className="Rouge_Img" src={Rouge} alt="Rouge Gif" />
-        <img className="Knight_Img" src={Knight} alt="Knight Gif" />
-      </div>
       <div className="Player_Container">
-        <h2 onClick={() => resetPlayer("Mage")}>The Mage</h2>
-        <h2 onClick={() => resetPlayer("Rouge")}>The Rouge</h2>
-        <h2 onClick={() => resetPlayer("Warrior")}>The Warrior</h2>
+        <div className="Mage">
+          <img className="Mage_Img" src={Mage} alt="Mage Gif" />
+          <div className="Character_Button">
+            <h2 onClick={() => resetPlayer("Mage")}>The Mage</h2>
+          </div>
+        </div>
+        <div className="Rouge">
+          <img className="Rouge_Img" src={Rouge} alt="Rouge Gif" />
+          <div className="Character_Button">
+            <h2 onClick={() => resetPlayer("Rouge")}>The Rouge</h2>
+          </div>
+        </div>
+        <div className="Knight">
+          <img className="Knight_Img" src={Knight} alt="Knight Gif" />
+          <div className="Character_Button">
+            <h2 onClick={() => resetPlayer("Warrior")}>The Warrior</h2>
+          </div>
+        </div>
       </div>
-      <div className="Start_Game">
-        <h2>Start Game</h2>
-      </div>
-      <div className="Back_Button" onClick={()=>changePage('Home') }>
-        <h2>Back</h2>
+      <div className="Button_Container">
+        <div className="Start_Game" onClick={() => changePage("Game")}>
+          <h2>Start Game</h2>
+        </div>
+        <div className="Back_Button" onClick={() => changePage("Home")}>
+          <h2>Back</h2>
+        </div>
       </div>
     </div>
   );
