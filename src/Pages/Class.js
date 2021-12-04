@@ -1,89 +1,41 @@
 import Mage from "../Assets/Mage.gif";
 import Rouge from "../Assets/Rouge.gif";
 import Knight from "../Assets/Knight.gif";
-const Class = ({ changePage }) => {
-  class player {
-    _classType = "";
-    _health = 0;
-    _attack = 0;
-    _speed = 0;
-    _defense = 0;
 
-    constructor(classType, health, attack, speed, defense) {
-      this._classType = classType;
-      this._health = health;
-      this._attack = attack;
-      this._speed = speed;
-      this._defense = defense;
-    }
-    start() {
-      return {
-        classType: this._classType,
-        _health: this._health,
-        _attack: this._attack,
-        _speed: this._speed,
-        _defense: this._defense,
-      };
-    }
-    increaseLife(number) {
-      this._health = this._health + number;
-      console.log({
-        classType: this._classType,
-        _health: this._health,
-        _attack: this._attack,
-        _speed: this._speed,
-        _defense: this._defense,
-      });
-    }
-  }
-  let Player;
-  const resetPlayer = (classType) => {
-    switch (classType) {
-      case "Mage":
-        Player = new player(classType, { Mage }, 25, 5, 5, 5);
-
-        alert(JSON.stringify(Player.start()));
-        break;
-      case "Rouge":
-        Player = new player(classType, { Rouge }, 20, 7, 7, 3);
-        alert(JSON.stringify(Player.start()));
-
-        break;
-      case "Warrior":
-        Player = new player(classType, { Knight }, 28, 7, 3, 7);
-        alert(JSON.stringify(Player.start()));
-
-        break;
-    }
-  };
-
+const Class = ({ changePage, resetPlayer, currentPlayer }) => {
   return (
     <div className="ClassPage">
       <h1>Choose Your Class</h1>
       <div className="Player_Container">
+          {/* MAGE */}
         <div className="Mage">
           <img className="Mage_Img" src={Mage} alt="Mage Gif" />
-          <div className="Character_Button">
+          <div className={` ${ currentPlayer && currentPlayer._classType === 'Mage' ? 'Clicked' : ' ' } Character_Button `}>
             <h2 onClick={() => resetPlayer("Mage")}>The Mage</h2>
           </div>
         </div>
+        {/* ROUGE */}
         <div className="Rouge">
           <img className="Rouge_Img" src={Rouge} alt="Rouge Gif" />
-          <div className="Character_Button">
+          <div className={` ${ currentPlayer && currentPlayer._classType === 'Rouge' ? 'Clicked' : ' ' } Character_Button `}>
             <h2 onClick={() => resetPlayer("Rouge")}>The Rouge</h2>
           </div>
         </div>
+        {/* KNIGHT */}
         <div className="Knight">
           <img className="Knight_Img" src={Knight} alt="Knight Gif" />
-          <div className="Character_Button">
-            <h2 onClick={() => resetPlayer("Warrior")}>The Warrior</h2>
+          
+          <div className={` ${ currentPlayer && currentPlayer._classType === 'Knight' ? 'Clicked' : ' ' } Character_Button `}>
+            <h2 onClick={() => resetPlayer("Knight")}>The Knight</h2>
           </div>
         </div>
       </div>
       <div className="Button_Container">
-        <div className="Start_Game" onClick={() => changePage("Game")}>
+        {/* Start Button */}
+        {currentPlayer && <div className="Start_Game" onClick={() => changePage("Game")}>
           <h2>Start Game</h2>
-        </div>
+        </div>}
+        {/* Back Button */}
         <div className="Back_Button" onClick={() => changePage("Home")}>
           <h2>Back</h2>
         </div>

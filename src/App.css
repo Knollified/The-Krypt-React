@@ -287,6 +287,13 @@ Header {
 .Shop_Keeper{
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
+}
+.Current_Player > img{
+  height: 200px;
+  width: 200px;
+}
+.Clicked > h2{
+  background: green;
 }
