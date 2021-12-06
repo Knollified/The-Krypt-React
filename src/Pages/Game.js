@@ -1,5 +1,5 @@
 import { mob } from "../Classes/Mob";
-import{ boss } from "../Classes/Boss"
+import { boss } from "../Classes/Boss";
 import { useEffect, useState } from "react";
 import Skeleton_Warrior from "../Assets/Skeleton_Warrior.gif";
 import Skeleton_Archer from "../Assets/Skeleton_Archer.gif";
@@ -8,7 +8,8 @@ import Skeleton_Warlock from "../Assets/Skeleton_Warlock.gif";
 import Skeleton_King from "../Assets/Skeleton_King.gif";
 import Skeleton_Rider from "../Assets/Skeleton_Rider.gif";
 import Skeleton_Dragon from "../Assets/Skeleton_Dragon.gif";
-import { action } from "../Actions/Action";
+import Skeleton_Heratic from "../Assets/Skeleton_Heratic.gif"
+import Skeleton_Collector from "../Assets/Skeleton_Collector.gif"
 
 const Game = ({ changePage, currentPlayer }) => {
   let enemy1 = new mob(
@@ -57,6 +58,24 @@ const Game = ({ changePage, currentPlayer }) => {
     Skeleton_Rider
   );
   let boss2 = new boss(
+    "Skeleton_Heratic",
+    Math.floor(Math.random() * (35 - 20) + 20),
+    Math.floor(Math.random() * (10 - 5) + 5),
+    Math.floor(Math.random() * (10 - 5) + 5),
+    Math.floor(Math.random() * (10 - 5) + 5),
+    20,
+    Skeleton_Heratic
+  );
+  let boss3 = new boss(
+    "Skeleton_Collector",
+    Math.floor(Math.random() * (35 - 20) + 20),
+    Math.floor(Math.random() * (10 - 5) + 5),
+    Math.floor(Math.random() * (10 - 5) + 5),
+    Math.floor(Math.random() * (10 - 5) + 5),
+    20,
+    Skeleton_Collector
+  );
+  let boss4 = new boss(
     "Skeleton_King",
     Math.floor(Math.random() * (40 - 25) + 25),
     Math.floor(Math.random() * (12 - 8) + 8),
@@ -65,7 +84,7 @@ const Game = ({ changePage, currentPlayer }) => {
     20,
     Skeleton_King
   );
-  let boss3 = new boss(
+  let boss5 = new boss(
     "Skeleton_Dragon",
     Math.floor(Math.random() * (45 - 30) + 30),
     Math.floor(Math.random() * (15 - 10) + 10),
@@ -74,28 +93,30 @@ const Game = ({ changePage, currentPlayer }) => {
     20,
     Skeleton_Dragon
   );
-  let mobList = [enemy1, enemy2, enemy3, enemy4]
-  let bossList = [boss1, boss2, boss3]
+
+  
   const [currentMob, setCurrentMob] = useState(enemy1);
   
   useEffect(() => {
-    let enemyChoice = Math.floor(Math.random() * (4 - 0) + 0)
-    console.log(enemyChoice)
-    const r = ()=>{
-      setCurrentMob(mobList[enemyChoice])
-    }
-    r()
+    let mobList = [enemy1, enemy2, enemy3, enemy4];
+    let enemyChoice = Math.floor(Math.random() * (4 - 0) + 0);
+    console.log(enemyChoice);
+    const r = () => {
+      setCurrentMob(mobList[enemyChoice]);
+    };
+    r();
   }, []);
   const [currentBoss, setCurrentBoss] = useState(boss1);
-  
-  useEffect(() => {
 
-    const r = ()=>{
-      
-      setCurrentBoss(boss1)
-    }
-    r()
+  useEffect(() => {
+    let bossList = [boss1, boss2, boss3, boss4, boss5];
+    let bossChoice = Math.floor(Math.random() * (4 - 0) + 0);
+    const r = () => {
+      setCurrentBoss(bossList[bossChoice]);
+    };
+    r();
   }, []);
+
 
   return (
     <div className="Game_Page">
@@ -122,9 +143,13 @@ const Game = ({ changePage, currentPlayer }) => {
           <div className="Current_Player">
             <img src={currentPlayer._img} alt="" />
           </div>
-          {currentMob._health  > 0 ? ' ' : <div className="Shop_Button " onClick={() => changePage("Shop")}> 
-            <h4>Shop</h4>
-          </div>}
+          {currentMob._health > 0 ? (
+            " "
+          ) : (
+            <div className="Shop_Button " onClick={() => changePage("Shop")}>
+              <h4>Shop</h4>
+            </div>
+          )}
         </div>
         <div className="Game_Events">
           <h3>Game Events</h3>
@@ -132,28 +157,35 @@ const Game = ({ changePage, currentPlayer }) => {
         <div className="Mob">
           <div className="Mob_Stats">
             <div className="Stats">
-              <h4>Hp: {currentMob._health}</h4>
+              <h4>Hp: {currentMob._health || currentBoss._health}</h4>
             </div>
             <div className="Stats">
-              <h4>Atk: {currentMob._attack}</h4>
+              <h4>Atk: {currentMob._attack || currentBoss._attack}</h4>
             </div>
             <div className="Stats">
-              <h4>Def: {currentMob._defense}</h4>
+              <h4>Def: {currentMob._defense || currentBoss._defense}</h4>
             </div>
             <div className="Stats">
-              <h4>Spd: {currentMob._speed}</h4>
+              <h4>Spd: {currentMob._speed || currentBoss._speed}</h4>
             </div>
           </div>
           <div className="Current_Player">
-            <img src={currentMob._img} alt="" />
+            <img src={currentMob._img || currentBoss._img} alt="" />
           </div>
-          <div className="NextBattle_Button">
-            <h4>Next Battle</h4>
-          </div>
+          {currentMob._health || currentBoss._health> 0 ? (
+            " "
+          ) : (
+            <div
+              className="NextBattle_Button"
+              onClick={setCurrentMob(currentMob)}
+            >
+              <h4>Next Battle</h4>
+            </div>
+          )}
         </div>
       </div>
       <div className="Action_Containers">
-        <div className="Attack_Button" onClick={ () => action.Attack(currentMob)}>
+        <div className="Attack_Button" onClick={() => console.log(currentMob._health -= (currentPlayer._attack + 1) - currentMob._defense)}>
           <h2>Attack</h2>
         </div>
         <div className="Defend_Button">

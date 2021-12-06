@@ -4,9 +4,7 @@ import Mage from "../Assets/Mage.gif";
 import Rouge from "../Assets/Rouge.gif";
 import Knight from "../Assets/Knight.gif";
 import { player } from "../Classes/Player";
-import Skeleton_Rider from "../Assets/Skeleton_Rider.gif";
-import { mob } from "../Classes/Mob";
-import { action } from "../Actions/Action";
+
 function GameEnter() {
   const [page, setPage] = useState("");
   const [currentPlayer, setCurrentPlayer] = useState();
@@ -26,7 +24,9 @@ function GameEnter() {
         Player = new player(classType, 28, 7, 3, 7, Knight, 0);
         setCurrentPlayer(Player);
         break;
+      default :
     }
+    
   };
 
   const changePage = (str) => {

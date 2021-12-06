@@ -50,7 +50,7 @@ const Shop = ({ changePage }) => {
           <h3>Hello Explorer, Coin for My Wares?</h3>
           <img
             src={ShopKeeper}
-            alt="Shop Keeper Image"
+            alt="Shop Keeper"
             className="ShopeKeeper_Img"
           />
         </div>
