@@ -1,0 +1,31 @@
+BOSS
+
+MOB
+
+SCORE COUNTER
+
+ininitially -> A Class
+initially - > B MOB 
+
+Action
+
+Attack(class,mob) {
+    mob.health - class.attack
+    setMob(sameMob+newHealth)
+}
+
+useEffect(()=>{
+    mob.health < 0 ? setScore(current=>current+1)
+},[])
+
+useEffect(()=>{
+
+    if (score ==2){
+        setMob(undefined)
+        setBoss ()
+    }
+},[SCORE])
+
+html
+
+if 

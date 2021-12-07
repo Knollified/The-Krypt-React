@@ -220,9 +220,11 @@ Header {
 .Stats {
   padding: 10px;
 }
-.Game_Events {
+.Game_Events{
   display: flex;
-  align-items: flex-end;
+  text-align: center;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 .Shop_Button > h4{
   width: 1in;
@@ -256,7 +258,7 @@ Header {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 5in;
+  height: 7in;
   width: 10in;
   margin: 30px;
   padding: 10px;
