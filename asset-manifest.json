@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/The-Krypt-React/static/css/main.b1380714.chunk.css",
+    "main.js": "/The-Krypt-React/static/js/main.604f081f.chunk.js",
+    "main.js.map": "/The-Krypt-React/static/js/main.604f081f.chunk.js.map",
+    "runtime-main.js": "/The-Krypt-React/static/js/runtime-main.53c46841.js",
+    "runtime-main.js.map": "/The-Krypt-React/static/js/runtime-main.53c46841.js.map",
+    "static/js/2.056e927a.chunk.js": "/The-Krypt-React/static/js/2.056e927a.chunk.js",
+    "static/js/2.056e927a.chunk.js.map": "/The-Krypt-React/static/js/2.056e927a.chunk.js.map",
+    "static/js/3.01f6f8d3.chunk.js": "/The-Krypt-React/static/js/3.01f6f8d3.chunk.js",
+    "static/js/3.01f6f8d3.chunk.js.map": "/The-Krypt-React/static/js/3.01f6f8d3.chunk.js.map",
+    "index.html": "/The-Krypt-React/index.html",
+    "static/css/main.b1380714.chunk.css.map": "/The-Krypt-React/static/css/main.b1380714.chunk.css.map",
+    "static/js/2.056e927a.chunk.js.LICENSE.txt": "/The-Krypt-React/static/js/2.056e927a.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/The-Krypt-React/static/media/BackGroundImage1.ba76c7c2.gif",
+    "static/media/Knight.bbb32b24.gif": "/The-Krypt-React/static/media/Knight.bbb32b24.gif",
+    "static/media/Mage.ad1c480e.gif": "/The-Krypt-React/static/media/Mage.ad1c480e.gif",
+    "static/media/Rouge.f49a7755.gif": "/The-Krypt-React/static/media/Rouge.f49a7755.gif",
+    "static/media/ShopKeeper.66f6a091.gif": "/The-Krypt-React/static/media/ShopKeeper.66f6a091.gif",
+    "static/media/Skeleton_Archer.2e9e5bda.gif": "/The-Krypt-React/static/media/Skeleton_Archer.2e9e5bda.gif",
+    "static/media/Skeleton_Collector.d771cbab.gif": "/The-Krypt-React/static/media/Skeleton_Collector.d771cbab.gif",
+    "static/media/Skeleton_Dragon.ad09202b.gif": "/The-Krypt-React/static/media/Skeleton_Dragon.ad09202b.gif",
+    "static/media/Skeleton_Heratic.fd7dc328.gif": "/The-Krypt-React/static/media/Skeleton_Heratic.fd7dc328.gif",
+    "static/media/Skeleton_King.dc3218c1.gif": "/The-Krypt-React/static/media/Skeleton_King.dc3218c1.gif",
+    "static/media/Skeleton_Lancer.dfc99c4c.gif": "/The-Krypt-React/static/media/Skeleton_Lancer.dfc99c4c.gif",
+    "static/media/Skeleton_Rider.e893007b.gif": "/The-Krypt-React/static/media/Skeleton_Rider.e893007b.gif",
+    "static/media/Skeleton_Warlock.d8a35ab7.gif": "/The-Krypt-React/static/media/Skeleton_Warlock.d8a35ab7.gif",
+    "static/media/Skeleton_Warrior.f4013fea.gif": "/The-Krypt-React/static/media/Skeleton_Warrior.f4013fea.gif",
+    "static/media/Skull.d4a418e2.gif": "/The-Krypt-React/static/media/Skull.d4a418e2.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.53c46841.js",
+    "static/js/2.056e927a.chunk.js",
+    "static/css/main.b1380714.chunk.css",
+    "static/js/main.604f081f.chunk.js"
+  ]
+}
