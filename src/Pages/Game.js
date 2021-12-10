@@ -25,36 +25,36 @@ const Game = ({
   let enemy1 = new mob(
     "Skeleton Warrior",
     Math.floor(Math.random() * (20 - 10) + 10),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
     10,
     Skeleton_Warrior
   );
   let enemy2 = new mob(
     "Skeleton Archer",
     Math.floor(Math.random() * (20 - 10) + 10),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
     10,
     Skeleton_Archer
   );
   let enemy3 = new mob(
     "Skeleton Lancer",
     Math.floor(Math.random() * (20 - 10) + 10),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
     10,
     Skeleton_Lancer
   );
   let enemy4 = new mob(
     "Skeleton Warlock",
     Math.floor(Math.random() * (20 - 10) + 10),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
-    Math.floor(Math.random() * (7 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
+    Math.floor(Math.random() * (5 - 2) + 2),
     10,
     Skeleton_Warlock
   );
@@ -322,7 +322,7 @@ const Game = ({
       setLoading(false);
     };
     a();
-  }, [score]);
+  }, [score, enemyChoice]);
 
   useEffect(() => {
     if (score % 5 === 0) {
@@ -444,9 +444,9 @@ const Game = ({
           </div>
         </div>
         <div className="Game_Events">
-            <h3>you lost {damageTake} Hp</h3>
-            {currentMob && currentMob._health > 0 ? (" ") : (<h3>{currentMob && currentMob._mobType} Defeated</h3>)}
-            {currentPlayer && currentPlayer._health > 0 ? (" ") : (<h3> You Were Defeated</h3>)}
+            {(currentMob && currentMob._health) === 0 || (currentPlayer && currentPlayer._health) === 0 ? (" ") : (<h3>you lost {damageTake} Hp from {(currentMob && currentMob._mobType) || (currentBoss && currentBoss._bossType)}</h3>)}
+            {(currentMob && currentMob._health) === 0  ? (<h3>{(currentMob && currentMob._mobType) || (currentBoss && currentBoss._BossType)} Defeated</h3>) : (" ")}
+            {(currentPlayer && currentPlayer._health) > 0 ? (" ") : (<h3> You Were Defeated By {(currentMob && currentMob._mobType) || (currentBoss && currentBoss._bossType)}</h3>)}
           </div>
         <div className="Action_Containers">
           {(currentMob && currentMob._health === 0) ||
@@ -454,18 +454,27 @@ const Game = ({
             " "
           ) : (
             <>
-              <div
+              {currentMob && currentMob._mobType ? ( <div
                 className="Attack_Button"
                 onClick={() =>
                   Attack(
                     currentPlayer._attack,
-                    (currentMob && currentMob._attack) ||
-                      (currentBoss && currentBoss._attack)
+                    (currentMob._attack)
                   )
                 }
               >
                 <h2>Attack</h2>
-              </div>
+              </div>) : (<div
+                className="Attack_Button"
+                onClick={() =>
+                  Attack(
+                    currentPlayer._attack,
+                    (currentBoss._attack)
+                  )
+                }
+              >
+                <h2>Attack</h2>
+              </div>)}
               <div
                 className="Defend_Button"
                 onClick={() =>

@@ -15,7 +15,7 @@ function GameEnter() {
   const resetPlayer = (classType) => {
     switch (classType) {
       case "Mage":
-        Player = new player(classType, 35, 35, 5, 5, 5, 5, Mage, 0);
+        Player = new player(classType, 35, 35, 5, 5, 6, 5, Mage, 0);
         setCurrentPlayer(Player);
         setSpecialAttack(1);
         break;
