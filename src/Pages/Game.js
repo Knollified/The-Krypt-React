@@ -255,6 +255,8 @@ const Game = ({
           } else if (playerDamage > newStateMob._defense) {
             return playerDamage - newStateMob._defense;
           }
+          newStateMob._health =
+          newStateMob._health - battleDamagePlayer(playerDamage);
         };
         let battleDamagePlayer = (mobDamage) => {
           if (mobDamage <= newStatePlayer._defense) {
@@ -262,13 +264,12 @@ const Game = ({
           } else if (mobDamage > newStatePlayer._defense) {
             return mobDamage - newStatePlayer._defense;
           }
-        };
-        newStatePlayer._health =
+          newStatePlayer._health =
           newStatePlayer._health - battleDamageMob(mobDamage);
+        };
         setCurrentPlayer(newStatePlayer);
         setDamageTaken(battleDamageMob(mobDamage));
-        newStateMob._health =
-          newStateMob._health - battleDamagePlayer(playerDamage);
+
         setCurrentMob(newStateMob);
       }
     } else if (currentBoss) {
