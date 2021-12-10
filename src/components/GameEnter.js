@@ -8,24 +8,25 @@ import { player } from "../Classes/Player";
 function GameEnter() {
   const [page, setPage] = useState("");
   const [currentPlayer, setCurrentPlayer] = useState();
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(1);
   const [specialAttackCount, setSpecialAttack] = useState(1);
+  const [bossChoice, setBossChoice] = useState(0);
 
   let Player;
   const resetPlayer = (classType) => {
     switch (classType) {
       case "Mage":
-        Player = new player(classType, 35, 35, 5, 5, 6, 5, Mage, 0);
+        Player = new player(classType, 35, 35, 8, 5, 3, 8, Mage, 0);
         setCurrentPlayer(Player);
         setSpecialAttack(1);
         break;
       case "Rouge":
-        Player = new player(classType, 30, 30, 7, 7, 3, 7, Rouge, 0);
+        Player = new player(classType, 30, 30, 7, 7, 5, 7, Rouge, 0);
         setCurrentPlayer(Player);
         setSpecialAttack(1);
         break;
       case "Knight":
-        Player = new player(classType, 45, 45, 7, 3, 7, 7, Knight, 0);
+        Player = new player(classType, 45, 45, 9, 3, 7, 9, Knight, 0);
         setCurrentPlayer(Player);
         setSpecialAttack(1);
         break;
@@ -55,6 +56,8 @@ function GameEnter() {
             changePage={changePage}
             currentPlayer={currentPlayer}
             setCurrentPlayer={setCurrentPlayer}
+            bossChoice={bossChoice}
+            setBossChoice={setBossChoice}
             score={score}
             setScore={setScore}
             specialAttackCount={specialAttackCount}
@@ -67,6 +70,8 @@ function GameEnter() {
             changePage={changePage}
             currentPlayer={currentPlayer}
             setCurrentPlayer={setCurrentPlayer}
+            bossChoice={bossChoice}
+            setBossChoice={setBossChoice}
             specialAttackCount={specialAttackCount}
             setSpecialAttack={setSpecialAttack}
           />

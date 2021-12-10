@@ -7,12 +7,14 @@ const Shop = ({
   setScore,
   specialAttackCount,
   setSpecialAttack,
+  setBossChoice,
 }) => {
   //Quit
   const quit = () => {
     changePage("Home");
     setCurrentPlayer("");
-    setScore(0);
+    setBossChoice(0)
+    setScore(1);
   };
   //Buy Potion
   const buyPotion = () => {
