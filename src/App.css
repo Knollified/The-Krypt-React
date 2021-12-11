@@ -7,7 +7,7 @@ body {
   background-color: black;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 .Game_Container {
   display: flex;
