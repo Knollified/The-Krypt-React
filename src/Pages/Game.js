@@ -137,8 +137,8 @@ const Game = ({
   const [currentMob, setCurrentMob] = useState(undefined);
   const [currentBoss, setCurrentBoss] = useState(undefined);
   const [loading, setLoading] = useState(false);
-  const [damageTake,setDamageTaken] = useState(0)
-  const [damageTakeM,setDamageTakenM] = useState(0)
+  const [damageTake, setDamageTaken] = useState(0);
+  const [damageTakeM, setDamageTakenM] = useState(0);
 
   let mobList = [enemy1, enemy2, enemy3, enemy4];
   let enemyChoice = Math.floor(Math.random() * (4 - 0) + 0);
@@ -169,8 +169,7 @@ const Game = ({
             return newStateMob._attack - newStatePlayer._defense;
           }
         };
-        newStatePlayer._health =
-          newStatePlayer._health - battleDamagePlayer();
+        newStatePlayer._health = newStatePlayer._health - battleDamagePlayer();
         setCurrentPlayer(newStatePlayer);
         setDamageTaken(battleDamagePlayer());
       }
@@ -183,7 +182,7 @@ const Game = ({
       } else {
         let battleDamagePlayer = () => {
           if (currentBoss._attack <= newStatePlayer._defense) {
-            return 1;
+            return 0;
           } else if (currentBoss._attack > newStatePlayer._defense) {
             return newStateBoss - newStatePlayer._defense;
           }
@@ -202,17 +201,31 @@ const Game = ({
       if (newStatePlayer._health - newStateMob._attack <= 0) {
         newStatePlayer._health = 0;
         setCurrentPlayer(newStatePlayer);
-      } else if (newStateMob._health - (newStatePlayer._attack + newStatePlayer._special) <= 0) {
+      } else if (
+        newStateMob._health -
+          (newStatePlayer._attack + newStatePlayer._special) <=
+        0
+      ) {
         newStateMob._health = 0;
         newStatePlayer._coin = newStatePlayer._coin + 5;
         setCurrentMob(newStateMob);
         setCurrentPlayer(newStatePlayer);
       } else {
         let battleDamageMob = () => {
-          if (newStatePlayer._attack + newStatePlayer._special <= newStateMob._defense) {
+          if (
+            newStatePlayer._attack + newStatePlayer._special <=
+            newStateMob._defense
+          ) {
             return newStatePlayer._attack;
-          } else if (newStatePlayer._attack + newStatePlayer._special > newStateMob._defense) {
-            return ((newStatePlayer._attack + newStatePlayer._special) - newStateMob._defense);
+          } else if (
+            newStatePlayer._attack + newStatePlayer._special >
+            newStateMob._defense
+          ) {
+            return (
+              newStatePlayer._attack +
+              newStatePlayer._special -
+              newStateMob._defense
+            );
           }
         };
         let battleDamagePlayer = () => {
@@ -222,13 +235,11 @@ const Game = ({
             return newStateMob._attack - newStatePlayer._defense;
           }
         };
-        newStateMob._health =
-          newStateMob._health - battleDamageMob();
+        newStateMob._health = newStateMob._health - battleDamageMob();
         setCurrentMob(newStateMob);
         setDamageTaken(battleDamagePlayer());
         setDamageTakenM(battleDamageMob());
-        newStatePlayer._health =
-          newStatePlayer._health - battleDamagePlayer();
+        newStatePlayer._health = newStatePlayer._health - battleDamagePlayer();
         setCurrentPlayer(newStatePlayer);
       }
     } else if (currentBoss) {
@@ -237,17 +248,31 @@ const Game = ({
       if (newStatePlayer._health - newStateBoss._attack <= 0) {
         newStatePlayer._health = 0;
         setCurrentPlayer(newStatePlayer);
-      } else if (newStateBoss._health - (newStatePlayer._attack + newStatePlayer._special) <= 0) {
+      } else if (
+        newStateBoss._health -
+          (newStatePlayer._attack + newStatePlayer._special) <=
+        0
+      ) {
         newStateBoss._health = 0;
         newStatePlayer._coin = newStatePlayer._coin + 5;
         setCurrentMob(newStateBoss);
         setCurrentPlayer(newStatePlayer);
       } else {
         let battleDamageMob = () => {
-          if (newStatePlayer._attack + newStatePlayer._special <= newStateBoss._defense) {
+          if (
+            newStatePlayer._attack + newStatePlayer._special <=
+            newStateBoss._defense
+          ) {
             return newStatePlayer._attack;
-          } else if (newStatePlayer._attack + newStatePlayer._special > newStateBoss._defense) {
-            return ((newStatePlayer._attack + newStatePlayer._special) - newStateBoss._defense);
+          } else if (
+            newStatePlayer._attack + newStatePlayer._special >
+            newStateBoss._defense
+          ) {
+            return (
+              newStatePlayer._attack +
+              newStatePlayer._special -
+              newStateBoss._defense
+            );
           }
         };
         let battleDamagePlayer = () => {
@@ -257,13 +282,11 @@ const Game = ({
             return newStateBoss._attack - newStatePlayer._defense;
           }
         };
-        newStateBoss._health =
-          newStateBoss._health - battleDamageMob();
+        newStateBoss._health = newStateBoss._health - battleDamageMob();
         setCurrentBoss(newStateBoss);
         setDamageTaken(battleDamagePlayer());
         setDamageTakenM(battleDamageMob());
-        newStatePlayer._health =
-          newStatePlayer._health - battleDamagePlayer();
+        newStatePlayer._health = newStatePlayer._health - battleDamagePlayer();
         setCurrentPlayer(newStatePlayer);
       }
     }
@@ -275,37 +298,92 @@ const Game = ({
     if (currentMob) {
       const newStatePlayer = { ...currentPlayer };
       const newStateMob = { ...currentMob };
-      if (newStatePlayer._health - newStateMob._attack <= 0) {
+      if (
+        newStatePlayer._health +
+          newStatePlayer._defense -
+          newStateMob._attack <=
+        0
+      ) {
         newStatePlayer._health = 0;
         setCurrentPlayer(newStatePlayer);
-      } else if (newStateMob._health - newStatePlayer._attack <= 0) {
+      } else if (
+        newStateMob._health + newStateMob._defense - newStatePlayer._attack <=
+        0
+      ) {
         newStateMob._health = 0;
         newStatePlayer._coin = newStatePlayer._coin + 5;
         setCurrentMob(newStateMob);
         setCurrentPlayer(newStatePlayer);
       } else {
-        let battleDamageMob = () => {
-          if (newStatePlayer._attack <= newStateMob._defense) {
-            return 1;
-          } else if (newStatePlayer._attack > newStateMob._defense) {
-            return newStatePlayer._attack - newStateMob._defense;
+        if (newStatePlayer._speed > newStateMob._speed) {
+          let battleDamageMob = () => {
+            if (newStatePlayer._attack <= newStateMob._defense) {
+              return 1;
+            } else if (newStatePlayer._attack > newStateMob._defense) {
+              return newStatePlayer._attack - newStateMob._defense;
+            }
+          };
+          let battleDamagePlayer = () => {
+            if (newStateMob._attack <= newStatePlayer._defense) {
+              return 1;
+            } else if (newStateMob._attack > newStatePlayer._defense) {
+              return newStateMob._attack - newStatePlayer._defense;
+            }
+          };
+          newStateMob._health = newStateMob._health - battleDamageMob();
+          setCurrentMob(newStateMob);
+          setDamageTaken(battleDamagePlayer());
+          setDamageTakenM(battleDamageMob());
+          newStatePlayer._health =
+            newStatePlayer._health - battleDamagePlayer();
+          setCurrentPlayer(newStatePlayer);
+        } else if (newStateMob._speed > newStatePlayer._speed) {
+          let battleDamagePlayer = () => {
+            if (newStateMob._attack <= newStatePlayer._defense) {
+              return 1;
+            } else if (newStateMob._attack > newStatePlayer._defense) {
+              return newStateMob._attack - newStatePlayer._defense;
+            }
+          };
+          let battleDamageMob = () => {
+            if (newStatePlayer._attack <= newStateMob._defense) {
+              return 1;
+            } else if (newStatePlayer._attack > newStateMob._defense) {
+              return newStatePlayer._attack - newStateMob._defense;
+            }
+          };
+          newStateMob._health = newStateMob._health - battleDamageMob();
+          setCurrentMob(newStateMob);
+          setDamageTaken(battleDamagePlayer());
+          setDamageTakenM(battleDamageMob());
+          newStatePlayer._health =
+            newStatePlayer._health - battleDamagePlayer();
+          setCurrentPlayer(newStatePlayer);
+        } else {
+          if (newStatePlayer._speed === newStateMob._speed) {
+            let battleDamageMob = () => {
+              if (newStatePlayer._attack <= newStateMob._defense) {
+                return 1;
+              } else if (newStatePlayer._attack > newStateMob._defense) {
+                return newStatePlayer._attack - newStateMob._defense;
+              }
+            };
+            let battleDamagePlayer = () => {
+              if (newStateMob._attack <= newStatePlayer._defense) {
+                return 1;
+              } else if (newStateMob._attack > newStatePlayer._defense) {
+                return newStateMob._attack - newStatePlayer._defense;
+              }
+            };
+            newStateMob._health = newStateMob._health - battleDamageMob();
+            setCurrentMob(newStateMob);
+            setDamageTaken(battleDamagePlayer());
+            setDamageTakenM(battleDamageMob());
+            newStatePlayer._health =
+              newStatePlayer._health - battleDamagePlayer();
+            setCurrentPlayer(newStatePlayer);
           }
-        };
-        let battleDamagePlayer = () => {
-          if (newStateMob._attack <= newStatePlayer._defense) {
-            return 1;
-          } else if (newStateMob._attack > newStatePlayer._defense) {
-            return newStateMob._attack - newStatePlayer._defense;
-          }
-        };
-        newStateMob._health =
-          newStateMob._health - battleDamageMob();
-        setCurrentMob(newStateMob);
-        setDamageTaken(battleDamagePlayer());
-        setDamageTakenM(battleDamageMob());
-        newStatePlayer._health =
-          newStatePlayer._health - battleDamagePlayer();
-        setCurrentPlayer(newStatePlayer);
+        }
       }
     } else if (currentBoss) {
       const newStatePlayer = { ...currentPlayer };
@@ -319,28 +397,75 @@ const Game = ({
         setCurrentBoss(newStateBoss);
         setCurrentPlayer(newStatePlayer);
       } else {
-        let battleDamageMob = () => {
-          if (newStatePlayer._attack <= newStateBoss._defense) {
-            return 1;
-          } else if (newStatePlayer._attack > newStateBoss._defense) {
-            return newStatePlayer._attack - newStateBoss._defense;
+        if (newStatePlayer._speed > newStateBoss._speed) {
+          let battleDamageMob = () => {
+            if (newStatePlayer._attack <= newStateBoss._defense) {
+              return 1;
+            } else if (newStatePlayer._attack > newStateBoss._defense) {
+              return newStatePlayer._attack - newStateBoss._defense;
+            }
+          };
+          let battleDamagePlayer = () => {
+            if (newStateBoss._attack <= newStatePlayer._defense) {
+              return 1;
+            } else if (newStateBoss._attack > newStatePlayer._defense) {
+              return newStateBoss._attack - newStatePlayer._defense;
+            }
+          };
+          newStateBoss._health = newStateBoss._health - battleDamageMob();
+          setCurrentBoss(newStateBoss);
+          setDamageTaken(battleDamagePlayer());
+          setDamageTakenM(battleDamageMob());
+          newStatePlayer._health =
+            newStatePlayer._health - battleDamagePlayer();
+          setCurrentPlayer(newStatePlayer);
+        } else if (newStateBoss._speed > newStatePlayer._speed) {
+          let battleDamagePlayer = () => {
+            if (newStateBoss._attack <= newStatePlayer._defense) {
+              return 1;
+            } else if (newStateBoss._attack > newStatePlayer._defense) {
+              return newStateBoss._attack - newStatePlayer._defense;
+            }
+          };
+          let battleDamageMob = () => {
+            if (newStatePlayer._attack <= newStateBoss._defense) {
+              return 1;
+            } else if (newStatePlayer._attack > newStateBoss._defense) {
+              return newStatePlayer._attack - newStateBoss._defense;
+            }
+          };
+          newStateBoss._health = newStateBoss._health - battleDamageMob();
+          setCurrentBoss(newStateBoss);
+          setDamageTaken(battleDamagePlayer());
+          setDamageTakenM(battleDamageMob());
+          newStatePlayer._health =
+            newStatePlayer._health - battleDamagePlayer();
+          setCurrentPlayer(newStatePlayer);
+        } else {
+          if (newStatePlayer._speed === newStateBoss._speed) {
+            let battleDamageMob = () => {
+              if (newStatePlayer._attack <= newStateBoss._defense) {
+                return 1;
+              } else if (newStatePlayer._attack > newStateBoss._defense) {
+                return newStatePlayer._attack - newStateBoss._defense;
+              }
+            };
+            let battleDamagePlayer = () => {
+              if (newStateBoss._attack <= newStatePlayer._defense) {
+                return 1;
+              } else if (newStateBoss._attack > newStatePlayer._defense) {
+                return newStateBoss._attack - newStatePlayer._defense;
+              }
+            };
+            newStateBoss._health = newStateBoss._health - battleDamageMob();
+            setCurrentBoss(newStateBoss);
+            setDamageTaken(battleDamagePlayer());
+            setDamageTakenM(battleDamageMob());
+            newStatePlayer._health =
+              newStatePlayer._health - battleDamagePlayer();
+            setCurrentPlayer(newStatePlayer);
           }
-        };
-        let battleDamagePlayer = () => {
-          if (newStateBoss._attack <= newStatePlayer._defense) {
-            return 1;
-          } else if (newStateBoss._attack > newStatePlayer._defense) {
-            return newStateBoss._attack - newStatePlayer._defense;
-          }
-        };
-        newStateBoss._health =
-          newStateBoss._health - battleDamageMob();
-        setCurrentBoss(newStateBoss);
-        setDamageTaken(battleDamagePlayer());
-        setDamageTakenM(battleDamageMob());
-        newStatePlayer._health =
-          newStatePlayer._health - battleDamagePlayer();
-        setCurrentPlayer(newStatePlayer);
+        }
       }
     }
   };
@@ -357,10 +482,10 @@ const Game = ({
     const a = () => {
       setLoading(true);
       if (!currentMob && !currentBoss) {
-        if(score % 5 === 0 ){
-          setCurrentBoss(bossList[bossChoice])
-        }else {
-          if(score > 5 && score < 10){
+        if (score % 5 === 0) {
+          setCurrentBoss(bossList[bossChoice]);
+        } else {
+          if (score > 5 && score < 10) {
             setCurrentMob(mobList[enemyChoice]);
           }
           setCurrentMob(mobList[enemyChoice]);
@@ -377,7 +502,7 @@ const Game = ({
         setCurrentBoss(bossList[bossChoice]);
       }
     }
-  }, [score,bossChoice]);
+  }, [score, bossChoice]);
 
   useEffect(() => {
     if ((currentMob && currentMob._health) <= 0) {
@@ -401,7 +526,9 @@ const Game = ({
             </div>
             <div className="Player_Stats">
               <div className="Stats">
-                <h4>Hp: {currentPlayer._health} / {currentPlayer._maxHealth}</h4>
+                <h4>
+                  Hp: {currentPlayer._health} / {currentPlayer._maxHealth}
+                </h4>
               </div>
               <div className="Stats">
                 <h4>Atk: {currentPlayer._attack}</h4>
@@ -442,10 +569,9 @@ const Game = ({
                   Hp:{" "}
                   {(currentMob && currentMob._health) ||
                     (currentBoss && currentBoss._health)}
-                    / {""}
-                    {(currentMob && currentMob._maxHealth) ||
+                  / {""}
+                  {(currentMob && currentMob._maxHealth) ||
                     (currentBoss && currentBoss._maxHealth)}
-                    
                 </h4>
               </div>
               <div className="Stats">
@@ -495,40 +621,67 @@ const Game = ({
           </div>
         </div>
         <div className="Game_Events">
-            {(currentMob && currentMob._health === 0 || currentBoss && currentBoss._health === 0) || currentPlayer && currentPlayer._health === 0 ? (" ") : (<h3>{currentPlayer._classType} lost {damageTake} Hp from {(currentMob && currentMob._mobType) || (currentBoss && currentBoss._bossType)} & </h3>)}
-            {(currentMob && currentMob._health === 0 || currentBoss && currentBoss._health === 0) || (currentPlayer && currentPlayer._health) === 0 ? (" ") : (<h3>{(currentMob && currentMob._mobType) || (currentBoss && currentBoss._bossType)} Lost {damageTakeM} Hp</h3>)}
-            {(currentMob && currentMob._health === 0 || currentBoss && currentBoss._health === 0)  ? (<h3>{(currentMob && currentMob._mobType) || (currentBoss && currentBoss._bossType)} Defeated </h3>) : (" ")}
-            {(currentPlayer && currentPlayer._health) > 0 ? (" ") : (<h3> You Were Defeated By {(currentMob && currentMob._mobType) || (currentBoss && currentBoss._bossType)}</h3>)}
-          </div>
+          {(currentMob && currentMob._health === 0) ||
+          (currentBoss && currentBoss._health === 0) ||
+          (currentPlayer && currentPlayer._health === 0) ? (
+            " "
+          ) : (
+            <h3>
+              {currentPlayer._classType} lost {damageTake} Hp from{" "}
+              {(currentMob && currentMob._mobType) ||
+                (currentBoss && currentBoss._bossType)}{" "}
+              &{" "}
+            </h3>
+          )}
+          {(currentMob && currentMob._health === 0) ||
+          (currentBoss && currentBoss._health === 0) ||
+          (currentPlayer && currentPlayer._health) === 0 ? (
+            " "
+          ) : (
+            <h3>
+              {(currentMob && currentMob._mobType) ||
+                (currentBoss && currentBoss._bossType)}{" "}
+              Lost {damageTakeM} Hp
+            </h3>
+          )}
+          {(currentMob && currentMob._health === 0) ||
+          (currentBoss && currentBoss._health === 0) ? (
+            <h3>
+              {(currentMob && currentMob._mobType) ||
+                (currentBoss && currentBoss._bossType)}{" "}
+              Defeated{" "}
+            </h3>
+          ) : (
+            " "
+          )}
+          {(currentPlayer && currentPlayer._health) > 0 ? (
+            " "
+          ) : (
+            <h3>
+              {" "}
+              You Were Defeated By{" "}
+              {(currentMob && currentMob._mobType) ||
+                (currentBoss && currentBoss._bossType)}
+            </h3>
+          )}
+        </div>
         <div className="Action_Containers">
           {(currentMob && currentMob._health === 0) ||
-          currentPlayer._health === 0 || (currentBoss && currentBoss._health === 0) ? (
+          currentPlayer._health === 0 ||
+          (currentBoss && currentBoss._health === 0) ? (
             " "
           ) : (
             <>
-              {currentMob && currentMob._mobType ? ( <div
-                className="Attack_Button"
-                onClick={() =>
-                  Attack(
-                  )
-                }
-              >
-                <h2>Attack</h2>
-              </div>) : (<div
-                className="Attack_Button"
-                onClick={() =>
-                  Attack(
-                  )
-                }
-              >
-                <h2>Attack</h2>
-              </div>)}
-              <div
-                className="Defend_Button"
-                onClick={() =>
-                  defend()
-                }
-              >
+              {currentMob && currentMob._mobType ? (
+                <div className="Attack_Button" onClick={() => Attack()}>
+                  <h2>Attack</h2>
+                </div>
+              ) : (
+                <div className="Attack_Button" onClick={() => Attack()}>
+                  <h2>Attack</h2>
+                </div>
+              )}
+              <div className="Defend_Button" onClick={() => defend()}>
                 <h2>Defend/Dodge</h2>
               </div>
               {specialAttackCount < 1 ? (
@@ -536,10 +689,7 @@ const Game = ({
               ) : (
                 <div
                   className="SpecialAttack_Button"
-                  onClick={() =>
-                    specialAttack(
-                    )
-                  }
+                  onClick={() => specialAttack()}
                 >
                   <h2>Special Attack</h2>
                 </div>
