@@ -44,7 +44,7 @@ const Game = ({
   let boss5MaxHealth = boss5Health;
 
   let boss6Health = Math.floor(Math.random() * (65 - 55) + 55);
-  let boss6MaxHealth = boss5Health;
+  let boss6MaxHealth = boss6Health;
 
   let enemy1 = new mob(
     "Skeleton Warrior",
