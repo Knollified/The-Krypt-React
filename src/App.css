@@ -4,8 +4,9 @@ body {
   justify-content: center;
   text-align: center;
   background: url(./Assets/BackGroundImage1.gif);
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 .Game_Container {
   display: flex;

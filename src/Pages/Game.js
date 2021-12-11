@@ -546,8 +546,8 @@ const Game = ({
             <div className="Current_Player">
               <img src={currentPlayer._img} alt="" />
             </div>
-            {(currentMob && currentMob._health) ||
-            (currentBoss && currentBoss._health) > 0 ? (
+            {((currentMob && currentMob._health) ||
+            (currentBoss && currentBoss._health) > 0) || score === 25 ? (
               " "
             ) : (
               <div className="Shop_Button " onClick={() => changePage("Shop")}>
@@ -605,8 +605,8 @@ const Game = ({
                 alt=""
               />
             </div>
-            {(currentMob && currentMob._health) ||
-            (currentBoss && currentBoss._health) > 0 ? (
+            {((currentMob && currentMob._health) ||
+            (currentBoss && currentBoss._health) > 0) || score === 25  ? (
               " "
             ) : (
               <div
@@ -654,6 +654,14 @@ const Game = ({
           ) : (
             " "
           )}
+          {score === 25 ? (
+            <h3>
+            You Cleared The Krypt
+          </h3>
+          ) : (
+            " "
+            
+          )}
           {(currentPlayer && currentPlayer._health) > 0 ? (
             " "
           ) : (
@@ -664,6 +672,7 @@ const Game = ({
                 (currentBoss && currentBoss._bossType)}
             </h3>
           )}
+          
         </div>
         <div className="Action_Containers">
           {(currentMob && currentMob._health === 0) ||
