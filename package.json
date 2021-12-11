@@ -81,6 +81,10 @@
 
     "gh-pages": "^3.2.3"
 
+  },
+
+  "resolutions": {
+    "terser": "3.14.1"
   }
 
 }
