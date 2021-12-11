@@ -154,41 +154,43 @@ const Game = ({
     }
   };
   // Player Defend
-  const defend = (mobDamage) => {
-    if (currentPlayer) {
+  const defend = () => {
+    if (currentMob) {
       const newStatePlayer = { ...currentPlayer };
-      if (newStatePlayer._health - mobDamage <= 0) {
+      const newStateMob = { ...currentMob };
+      if (newStatePlayer._health - newStateMob._attack <= 0) {
         newStatePlayer._health = 0;
         setCurrentPlayer(newStatePlayer);
       } else {
-        let battleDamagePlayer = (mobDamage) => {
-          if (mobDamage <= newStatePlayer._defense) {
+        let battleDamagePlayer = () => {
+          if (newStateMob._attack <= newStatePlayer._defense) {
             return 0;
-          } else if (mobDamage > newStatePlayer._defense) {
-            return mobDamage - newStatePlayer._defense;
+          } else if (newStateMob._attack > newStatePlayer._defense) {
+            return newStateMob._attack - newStatePlayer._defense;
           }
         };
         newStatePlayer._health =
-          newStatePlayer._health - battleDamagePlayer(mobDamage);
+          newStatePlayer._health - battleDamagePlayer();
         setCurrentPlayer(newStatePlayer);
-        setDamageTaken(battleDamagePlayer(mobDamage));
+        setDamageTaken(battleDamagePlayer());
       }
     } else if (currentBoss) {
-      const newState = { ...currentBoss };
-      if (newState._health - mobDamage <= 0) {
-        newState._health = 0;
-        setCurrentPlayer(newState);
+      const newStatePlayer = { ...currentPlayer };
+      const newStateBoss = { ...currentBoss };
+      if (newStatePlayer._health - newStateBoss._attack <= 0) {
+        newStatePlayer._health = 0;
+        setCurrentPlayer(newStatePlayer);
       } else {
-        let battleDamagePlayer = (bossDamage) => {
-          if (bossDamage <= newState._defense) {
+        let battleDamagePlayer = () => {
+          if (currentBoss._attack <= newStatePlayer._defense) {
             return 1;
-          } else if (bossDamage > newState._defense) {
-            return bossDamage - newState._defense;
+          } else if (currentBoss._attack > newStatePlayer._defense) {
+            return newStateBoss - newStatePlayer._defense;
           }
         };
-        newState._health = newState._health - battleDamagePlayer(mobDamage);
-        setCurrentPlayer(newState);
-        setDamageTaken(battleDamagePlayer(mobDamage));
+        newStatePlayer._health = newStatePlayer._health - battleDamagePlayer();
+        setCurrentPlayer(newStatePlayer);
+        setDamageTaken(battleDamagePlayer());
       }
     }
   };
