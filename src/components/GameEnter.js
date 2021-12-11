@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Home, Class, Game, HowToPlay, Shop, Win } from "../Pages/";
+import { Home, Class, Game, HowToPlay, Shop} from "../Pages/";
 import Mage from "../Assets/Mage.gif";
 import Rouge from "../Assets/Rouge.gif";
 import Knight from "../Assets/Knight.gif";
@@ -53,20 +53,6 @@ function GameEnter() {
       case "Game":
         return (
           <Game
-            changePage={changePage}
-            currentPlayer={currentPlayer}
-            setCurrentPlayer={setCurrentPlayer}
-            bossChoice={bossChoice}
-            setBossChoice={setBossChoice}
-            score={score}
-            setScore={setScore}
-            specialAttackCount={specialAttackCount}
-            setSpecialAttack={setSpecialAttack}
-          />
-        );
-        case "Win":
-        return (
-          <Win
             changePage={changePage}
             currentPlayer={currentPlayer}
             setCurrentPlayer={setCurrentPlayer}
