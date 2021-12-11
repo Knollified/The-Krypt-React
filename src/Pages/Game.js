@@ -11,6 +11,7 @@ import Skeleton_Rider from "../Assets/Skeleton_Rider.gif";
 import Skeleton_Dragon from "../Assets/Skeleton_Dragon.gif";
 import Skeleton_Heratic from "../Assets/Skeleton_Heratic.gif";
 import Skeleton_Collector from "../Assets/Skeleton_Collector.gif";
+import Skeleton_Titan from "../Assets/Skeleton_Titan.gif";
 
 const Game = ({
   changePage,
@@ -27,20 +28,23 @@ const Game = ({
   let Health = Math.floor(Math.random() * (20 - 10) + 10);
   let maxHealth = Health;
 
-  let boss1Health = Math.floor(Math.random() * (35 - 20) + 20);
+  let boss1Health = Math.floor(Math.random() * (35 - 25) + 25);
   let boss1MaxHealth = boss1Health;
 
-  let boss2Health = Math.floor(Math.random() * (35 - 20) + 20);
+  let boss2Health = Math.floor(Math.random() * (35 - 25) + 25);
   let boss2MaxHealth = boss2Health;
 
-  let boss3Health = Math.floor(Math.random() * (35 - 20) + 20);
+  let boss3Health = Math.floor(Math.random() * (35 - 25) + 25);
   let boss3MaxHealth = boss3Health;
 
-  let boss4Health = Math.floor(Math.random() * (40 - 25) + 25);
+  let boss4Health = Math.floor(Math.random() * (40 - 35) + 35);
   let boss4MaxHealth = boss4Health;
 
-  let boss5Health = Math.floor(Math.random() * (45 - 30) + 30);
+  let boss5Health = Math.floor(Math.random() * (45 - 40) + 40);
   let boss5MaxHealth = boss5Health;
+
+  let boss6Health = Math.floor(Math.random() * (65 - 55) + 55);
+  let boss6MaxHealth = boss5Health;
 
   let enemy1 = new mob(
     "Skeleton Warrior",
@@ -133,6 +137,16 @@ const Game = ({
     20,
     Skeleton_Dragon
   );
+  let boss6 = new boss(
+    "Skeleton Titan",
+    boss6Health,
+    boss6MaxHealth,
+    Math.floor(Math.random() * (15 - 10) + 10),
+    Math.floor(Math.random() * (15 - 10) + 10),
+    Math.floor(Math.random() * (15 - 10) + 10),
+    20,
+    Skeleton_Titan
+  )
 
   const [currentMob, setCurrentMob] = useState(undefined);
   const [currentBoss, setCurrentBoss] = useState(undefined);
@@ -142,7 +156,7 @@ const Game = ({
 
   let mobList = [enemy1, enemy2, enemy3, enemy4];
   let enemyChoice = Math.floor(Math.random() * (4 - 0) + 0);
-  let bossList = [boss1, boss2, boss3, boss4, boss5];
+  let bossList = [boss1, boss2, boss3, boss4, boss5,boss6];
 
   const nextButtonHandler = () => {
     if (score % 5 === 0) {
@@ -547,7 +561,7 @@ const Game = ({
               <img src={currentPlayer._img} alt="" />
             </div>
             {((currentMob && currentMob._health) ||
-            (currentBoss && currentBoss._health) > 0) || score === 26 ? (
+            (currentBoss && currentBoss._health) > 0) || score === 31 ? (
               " "
             ) : (
               <div className="Shop_Button " onClick={() => changePage("Shop")}>
@@ -606,7 +620,7 @@ const Game = ({
               />
             </div>
             {((currentMob && currentMob._health) ||
-            (currentBoss && currentBoss._health) > 0) || score === 26  ? (
+            (currentBoss && currentBoss._health) > 0) || score === 31  ? (
               " "
             ) : (
               <div
@@ -654,7 +668,7 @@ const Game = ({
           ) : (
             " "
           )}
-          {score === 26 ? (
+          {score === 31 ? (
             <h3>
             You Cleared The Krypt
           </h3>
