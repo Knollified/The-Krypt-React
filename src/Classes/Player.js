@@ -8,8 +8,12 @@ export class player {
   _special = 0;
   _img = "";
   _coin = 0;
+  _level = 0;
+  _mana = 0;
+  _maxMana = 0;
+  _exp = 0;
 
-  constructor(classType, health, maxHealth, attack, speed, defense, special, img, coin) {
+  constructor(classType, health, maxHealth, attack, speed, defense, special, img, coin, level, mana, maxMana, exp) {
     this._classType = classType;
     this._maxHealth = maxHealth;
     this._health = health;
@@ -19,6 +23,10 @@ export class player {
     this._special =special;
     this._img = img;
     this._coin = coin;
+    this._level = level;
+    this._mana = mana;
+    this._maxMana = maxMana;
+    this._exp =exp;
   }
   start() {
     return {
@@ -31,6 +39,10 @@ export class player {
       _special: this._special,
       _img: this._img,
       _coin: this._coin,
+      _level: this._level,
+      _mana: this._mana,
+      _maxMana: this._maxMana,
+      _exp: this._exp
     };
   }
   increaseLife(number) {

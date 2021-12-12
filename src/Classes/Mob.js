@@ -7,8 +7,10 @@ export class mob {
     _defense = 0;
     _coin = 0;
     _img = '';
+    _exp = 0;
+
   
-    constructor(mobType, health, maxHealth, attack, speed, defense,coin, img) {
+    constructor(mobType, health, maxHealth, attack, speed, defense,coin, img , exp) {
     this._mobType = mobType;
     this._health = health;
     this._maxHealth = maxHealth;
@@ -17,6 +19,7 @@ export class mob {
     this._defense = defense;
     this._coin = coin;
     this._img = img;
+    this._exp = exp;
 
   }
   start(){
@@ -29,6 +32,7 @@ export class mob {
         _defense :this._defense,
         _img :this._img,
         _coin :this._coin,
+        _exp: this._exp
 
 
       }
